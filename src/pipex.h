@@ -6,7 +6,7 @@
 /*   By: cyacoub- <cyacoub-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 11:31:22 by cyacoub-          #+#    #+#             */
-/*   Updated: 2023/03/09 17:54:06 by cyacoub-         ###   ########.fr       */
+/*   Updated: 2023/03/09 21:13:21 by cyacoub-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,8 @@
 
 void	child_process(char **argv, char **envp, int *fd);
 void	parent_process(char **argv, char **envp, int *fd);
-char	*find_path(char *cmd, char **envp);
-void	error(void);
+void	put_error(void);
 void	execute(char *argv, char **envp);
-int		get_next_line(char **line);
-
-
-# define EXIT_ERROR			1
 
 //===SETTINGS 	COLORS===/
 //===Color font code===/

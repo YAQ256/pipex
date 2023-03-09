@@ -6,7 +6,7 @@
 /*   By: cyacoub- <cyacoub-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 17:48:42 by cyacoub-          #+#    #+#             */
-/*   Updated: 2023/03/09 17:50:17 by cyacoub-         ###   ########.fr       */
+/*   Updated: 2023/03/09 21:12:33 by cyacoub-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
  * 
  * @return El camino al comando.
  */
-char	*find_path(char *cmd, char **envp)
+static char	*path_finder(char *cmd, char **envp)
 {
 	char	**paths;
 	char	*path;
@@ -53,9 +53,9 @@ char	*find_path(char *cmd, char **envp)
 /**
  * Imprime un mensaje de error y sale del programa.
  */
-void	error(void)
+void	put_error(void)
 {
-	perror("\033[31mError");
+	perror(RED"Error"RESET);
 	exit(EXIT_FAILURE);
 }
 
@@ -73,51 +73,14 @@ void	execute(char *argv, char **envp)
 	
 	i = -1;
 	cmd = ft_split(argv, ' ');
-	path = find_path(cmd[0], envp);
+	path = path_finder(cmd[0], envp);
 	if (!path)	
 	{
 		while (cmd[++i])
 			free(cmd[i]);
 		free(cmd);
-		error();
+		put_error();
 	}
 	if (execve(path, cmd, envp) == -1)
-		error();
-}
-
-/**
- * Lee desde la entrada estándar, un carácter a la vez, hasta que llega a un
- * carácter de nueva línea o al final de la entrada, y luego devuelve la línea
- * leída como una cadena.
- * 
- * @param line Esta es la dirección de un puntero a un carácter que se usará para
- * guardar la línea leída del descriptor de archivo.
- * 
- * @return El número de caracteres leídos.
- */
-int	get_next_line(char **line)
-{
-	char	*buffer;
-	int		i;
-	int		r;
-	char	c;
-
-	i = 0;
-	r = 0;
-	buffer = (char *)malloc(10000);
-	if (!buffer)
-		return (-1);
-	r = read(0, &c, 1);
-	while (r && c != '\n' && c != '\0')
-	{
-		if (c != '\n' && c != '\0')
-			buffer[i] = c;
-		i++;
-		r = read(0, &c, 1);
-	}
-	buffer[i] = '\n';
-	buffer[++i] = '\0';
-	*line = buffer;
-	free(buffer);
-	return (r);
+		put_error();
 }

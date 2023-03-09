@@ -6,7 +6,7 @@
 /*   By: cyacoub- <cyacoub-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 19:01:23 by cyacoub-          #+#    #+#             */
-/*   Updated: 2023/03/09 17:55:40 by cyacoub-         ###   ########.fr       */
+/*   Updated: 2023/03/09 20:23:15 by cyacoub-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,5 @@ char	*ft_substr(char const *s, unsigned int start, size_t len);
 void	ft_bzero(void *s, size_t n);
 void	*ft_memset(void *b, int c, size_t n);
 char	*ft_strnstr(const char *str, const char *to_find, size_t len);
-
-/* char	*get_next_line(int fd);
-size_t	ft_strlen_gnl(char *str);
-char	*ft_strjoin_gnl(char *s1, char *s2);
-char	*ft_strchr_gnl(char *str, int c); */
 
 #endif

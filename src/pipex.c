@@ -6,7 +6,7 @@
 /*   By: cyacoub- <cyacoub-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 11:37:57 by cyacoub-          #+#    #+#             */
-/*   Updated: 2023/03/09 17:47:08 by cyacoub-         ###   ########.fr       */
+/*   Updated: 2023/03/09 21:17:56 by cyacoub-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,13 @@
  */
 void	child_process(char **argv, char **envp, int *fd)
 {
-	int		filein;
+	int	fd_in;
 
-	filein = open(argv[1], O_RDONLY, 0777);
-	if (filein == -1)
-		error();
+	fd_in = open(argv[1], O_RDONLY, 0777);
+	if (fd_in == -1)
+		put_error();
 	dup2(fd[1], STDOUT_FILENO);
-	dup2(filein, STDIN_FILENO);
+	dup2(fd_in, STDIN_FILENO);
 	close(fd[0]);
 	execute(argv[2], envp);
 }
@@ -50,13 +50,13 @@ void	child_process(char **argv, char **envp, int *fd)
  */
 void	parent_process(char **argv, char **envp, int *fd)
 {
-	int		fileout;
+	int		fd_out;
 
-	fileout = open(argv[4], O_WRONLY | O_CREAT | O_TRUNC, 0777);
-	if (fileout == -1)
-		error();
+	fd_out = open(argv[4], O_WRONLY | O_CREAT | O_TRUNC, 0777);
+	if (fd_out == -1)
+		put_error();
 	dup2(fd[0], STDIN_FILENO);
-	dup2(fileout, STDOUT_FILENO);
+	dup2(fd_out, STDOUT_FILENO);
 	close(fd[1]);
 	execute(argv[3], envp);
 }
@@ -81,10 +81,10 @@ int	main(int argc, char **argv, char **envp)
 	if (argc == 5)
 	{
 		if (pipe(fd) == -1)
-			error();
+			put_error();
 		pid1 = fork();
 		if (pid1 == -1)
-			error();
+			put_error();
 		if (pid1 == 0)
 			child_process(argv, envp, fd);
 		waitpid(pid1, NULL, 0);
@@ -92,8 +92,9 @@ int	main(int argc, char **argv, char **envp)
 	}
 	else
 	{
-		ft_putstr_fd("\033[31mError: Bad arguments\n\e[0m", 2);
-		ft_putstr_fd("Ex: ./pipex <file1> <cmd1> <cmd2> <file2>\n", 1);
+		ft_putstr_fd(RED"Error: There must be\n"RESET, 1);
+		ft_putstr_fd(RED"-Infile\n-2 cmds\n-Outfile"RESET, 1);
+		ft_putstr_fd(RED"./pipex <file1> <cmd1> <cmd2> <file2>\n"RESET, 1);
 	}
 	return (0);
 }

@@ -6,7 +6,7 @@
 #    By: cyacoub- <cyacoub-@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/09 17:17:25 by cyacoub-          #+#    #+#              #
-#    Updated: 2023/03/09 17:55:53 by cyacoub-         ###   ########.fr        #
+#    Updated: 2023/03/09 20:23:29 by cyacoub-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,9 +28,7 @@ SRC =	ft_strncmp.c\
 		ft_substr.c\
 		ft_bzero.c\
 		ft_memset.c\
-		ft_strnstr.c\
-		#get_next_line.c\
-		#get_next_line_utils.c
+		ft_strnstr.c
 
 OBJS = $(SRC:.c=.o)
 
