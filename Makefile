@@ -6,7 +6,7 @@
 #    By: cyacoub- <cyacoub-@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/08 11:37:42 by cyacoub-          #+#    #+#              #
-#    Updated: 2023/03/08 11:37:43 by cyacoub-         ###   ########.fr        #
+#    Updated: 2023/03/09 18:00:49 by cyacoub-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,12 +17,14 @@ HEADER = pipex.h
 
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
+LIBFT = ./libft/libft.a
 LIB = ./src/pipex.h
 #LIB_BONUS = ./src/pipex_bonus.h
 SRC_PATH = ./src/
 #SRC_BONUS_PATH = ./src_bonus/
 
-SRC =
+SRC =	pipex.c\
+		utils.c\
 
 #SRC_BONUS =
 
@@ -32,21 +34,26 @@ SRCS = $(addprefix $(SRC_PATH), $(SRC))
 OBJS = $(SRCS:.c=.o)
 #OBJS_BONUS = $(SRCS_BONUS:.c=.o)
 
-all: $(NAME)
+all: make_libft $(NAME)
+
+make_libft:
+	@make all -C ./libft
 
 #bonus: $(NAME_BONUS)
 
 $(NAME): $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) -I $(LIB) -o $(NAME)
+	$(CC) $(CFLAGS) $(LIBFT) $(OBJS) -I $(LIB) -o $(NAME)
 
 #$(NAME_BONUS): $(OBJS_BONUS)
-#	$(CC) $(CFLAGS) $(OBJS_BONUS) -I $(LIB_BONUS) -o $(NAME)
+#	$(CC) $(CFLAGS) $(LIBFT) $(OBJS_BONUS) -I $(LIB_BONUS) -o $(NAME)
 
 clean:
 	@rm -f $(OBJS) $(OBJS_BONUS)
+	@make clean -C ./libft
 
 fclean: clean
 	@rm -f $(NAME) $(NAME_BONUS)
+	@make fclean -C ./libft
 	@echo "All Clean"
 
 re: fclean all

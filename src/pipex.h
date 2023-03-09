@@ -6,16 +6,29 @@
 /*   By: cyacoub- <cyacoub-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 11:31:22 by cyacoub-          #+#    #+#             */
-/*   Updated: 2023/03/08 11:32:41 by cyacoub-         ###   ########.fr       */
+/*   Updated: 2023/03/09 17:54:06 by cyacoub-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PIPEX_H
 # define PIPEX_H
 
-# include <unistd.h>
+# include "../libft/libft.h"
+
 # include <stdlib.h>
+# include <unistd.h>
+# include <string.h>
 # include <stdio.h>
+# include <sys/wait.h>
+# include <fcntl.h>
+
+void	child_process(char **argv, char **envp, int *fd);
+void	parent_process(char **argv, char **envp, int *fd);
+char	*find_path(char *cmd, char **envp);
+void	error(void);
+void	execute(char *argv, char **envp);
+int		get_next_line(char **line);
+
 
 # define EXIT_ERROR			1
 
