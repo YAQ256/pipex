@@ -6,7 +6,7 @@
 /*   By: cyacoub- <cyacoub-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 19:07:49 by cyacoub-          #+#    #+#             */
-/*   Updated: 2023/03/09 17:05:35 by cyacoub-         ###   ########.fr       */
+/*   Updated: 2023/03/13 16:22:45 by cyacoub-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,4 +27,3 @@ int	ft_strncmp(const char *str1, const char *str2, size_t n)
 		return ((unsigned char) str1[i] - (unsigned char) str2[i]);
 	return (0);
 }
-

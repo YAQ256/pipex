@@ -6,7 +6,7 @@
 /*   By: cyacoub- <cyacoub-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 15:39:20 by cyacoub-          #+#    #+#             */
-/*   Updated: 2023/03/12 17:44:27 by cyacoub-         ###   ########.fr       */
+/*   Updated: 2023/03/13 16:22:35 by cyacoub-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static char	**ft_free(char **res)
 	int	i;
 
 	i = 0;
-	while (res[i] != (void *)'\0')
+	while (res[i] != (void *) '\0')
 	{
 		free(res[i]);
 		i++;
