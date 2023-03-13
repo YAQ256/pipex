@@ -5,8 +5,8 @@
 #                                                     +:+ +:+         +:+      #
 #    By: cyacoub- <cyacoub-@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/03/08 11:37:42 by cyacoub-          #+#    #+#              #
-#    Updated: 2023/03/09 18:00:49 by cyacoub-         ###   ########.fr        #
+#    Created: 2023/03/12 15:24:35 by cyacoub-          #+#    #+#              #
+#    Updated: 2023/03/12 15:29:25 by cyacoub-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,8 +23,10 @@ LIB = ./src/pipex.h
 SRC_PATH = ./src/
 #SRC_BONUS_PATH = ./src_bonus/
 
-SRC =	pipex.c\
-		utils.c\
+SRC =	errors.c\
+		files.c\
+		main.c\
+		pipex.c
 
 #SRC_BONUS =
 

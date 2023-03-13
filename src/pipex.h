@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: cyacoub- <cyacoub-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/08 11:31:22 by cyacoub-          #+#    #+#             */
-/*   Updated: 2023/03/09 21:13:21 by cyacoub-         ###   ########.fr       */
+/*   Created: 2023/03/12 15:27:00 by cyacoub-          #+#    #+#             */
+/*   Updated: 2023/03/12 18:02:54 by cyacoub-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,32 @@
 # define PIPEX_H
 
 # include "../libft/libft.h"
-
-# include <stdlib.h>
 # include <unistd.h>
-# include <string.h>
 # include <stdio.h>
-# include <sys/wait.h>
 # include <fcntl.h>
+# include <sys/wait.h>
+# include <string.h>
+# include <errno.h>
+# include <stdlib.h>
 
-void	child_process(char **argv, char **envp, int *fd);
-void	parent_process(char **argv, char **envp, int *fd);
-void	put_error(void);
-void	execute(char *argv, char **envp);
+typedef struct s_var
+{
+	int		argc;
+	char	**envp;
+	int		last_command;
+	int		inputfile_error;
+	int		fd_heredoc;
+	char	**path_options;
+	int		fd_pipe[2];
+	pid_t	child;
+}	t_var;
+
+int		manage_heredoc(t_var var, char **argv);
+int		manage_inputfile(t_var var, char **argv);
+void	manage_outputfile(t_var var, char **argv);
+void	pipex(t_var var, char **argv);
+void	command_not_found(char *invalid_command, char zsh_or_pipex);
+void	handle_errors(int exitcode);
 
 //===SETTINGS 	COLORS===/
 //===Color font code===/
