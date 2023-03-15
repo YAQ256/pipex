@@ -6,7 +6,7 @@
 /*   By: cyacoub- <cyacoub-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 15:28:08 by cyacoub-          #+#    #+#             */
-/*   Updated: 2023/03/13 16:21:06 by cyacoub-         ###   ########.fr       */
+/*   Updated: 2023/03/15 16:44:43 by cyacoub-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int	main(int argc, char **argv, char **envp)
 {
 	t_var	var;
 
-	if (argc < 5)
+	if (argc != 5)
 	{
 		ft_putstr_fd(RED, STDERR_FILENO);
 		ft_putendl_fd("Error: invalid number of arguments", STDERR_FILENO);
