@@ -6,7 +6,7 @@
 /*   By: cyacoub- <cyacoub-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 15:27:37 by cyacoub-          #+#    #+#             */
-/*   Updated: 2023/03/13 16:20:44 by cyacoub-         ###   ########.fr       */
+/*   Updated: 2023/03/17 12:59:24 by cyacoub-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,9 @@ int	manage_heredoc(t_var var, char **argv)
 
 	if (var.argc < 6)
 	{
+		ft_putstr_fd(RED, STDERR_FILENO);
 		ft_putendl_fd("Error message: Too few arguments", STDERR_FILENO);
+		ft_putstr_fd(RESET, STDERR_FILENO);
 		exit(EXIT_FAILURE);
 	}
 	fd_heredoc = open("heredoc", O_CREAT | O_RDWR | O_EXCL, 0644);
